@@ -1,0 +1,16 @@
+.container {
+  margin: 0 auto;
+  padding: 0 calc(50% - 585px);
+}
+
+@media ($tablet-max-width) {
+  .container {
+    padding: 0 25px;
+  }
+}
+
+@media ($mobile-max-width) {
+  .container {
+    padding: 0 15px;
+  }
+}

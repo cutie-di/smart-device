@@ -1,0 +1,76 @@
+.card {
+  &:hover img,
+  &:focus img {
+    transition: all 0.5s ease-in-out;
+    filter: saturate(100%) blur(2px);
+    opacity: 0.6;
+  }
+
+  &:hover a::before,
+  &:focus a::before {
+    transition: all 0.5s ease-in-out;
+    background-color: $color-special-grey;
+  }
+}
+
+.card a {
+  position: relative;
+  cursor: pointer;
+
+  &::before {
+    position: absolute;
+    content: "";
+    background-color: $color-decoration;
+    width: 63px;
+    height: 63px;
+    right: 1px;
+    bottom: 4px;
+    z-index: 2;
+  }
+
+  &::after {
+    position: absolute;
+    content: "";
+    background-image: url("../img/sprite/icon-arrow.svg");
+    background-repeat: no-repeat;
+    width: 6px;
+    height: 9px;
+    right: 27px;
+    bottom: 32px;
+    z-index: 3;
+  }
+}
+
+.card h3 {
+  @include font($title-font, 400);
+  position: absolute;
+  font-size: 20px;
+  line-height: 30px;
+  color: $color-basic-white;
+  z-index: 3;
+  margin: 50px 44px;
+  padding-right: 30%;
+}
+
+.card img {
+  display: inline-block;
+  filter: saturate(0%);
+  width: 370px;
+  height: 620px;
+  opacity: 0.2;
+
+  @media ($desktop-1440-width) {
+    width: 100%;
+    height: auto;
+  }
+
+  @media ($tablet-max-width) {
+    min-width: 715px;
+    min-height: 256px;
+  }
+
+  @media ($mobile-max-width) {
+    min-width: 290px;
+    min-height: 256px;
+  }
+}

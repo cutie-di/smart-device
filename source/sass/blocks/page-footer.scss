@@ -1,0 +1,25 @@
+.page-footer {
+  margin-top: 40px;
+}
+
+.page-footer__inner-block {
+  display: grid;
+  grid-template-columns: 28% 1fr;
+  gap: 2%;
+  margin: 0 auto 55px;
+  padding: 0 calc(50% - 706px);
+
+  @media ($desktop-1440-width) {
+    padding: 0 25px;
+  }
+
+  @media ($desktop-1200-width) {
+    gap: 5%;
+  }
+
+  @media ($tablet-max-width) {
+    display: block;
+    padding: 0;
+    margin: 0;
+  }
+}

@@ -1,0 +1,256 @@
+.main-nav {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.main-nav__wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  padding: 20px calc(50% - 706px);
+
+  @media ($desktop-1440-width) {
+    padding: 20px 25px;
+  }
+
+  @media ($tablet-max-width) {
+    padding: 7px 20px;
+  }
+
+  @media ($mobile-max-width) {
+    padding: 4px 10px;
+  }
+}
+
+.main-nav__logo {
+  display: flex;
+  padding-top: 13px;
+
+  img {
+    width: 52px;
+    height: 52px;
+  }
+
+  div {
+    padding-top: 6px;
+    padding-left: 16px;
+  }
+
+  span {
+    display: block;
+    font-family: "Roboto Condensed", "Arial Black", sans-serif;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 29px;
+    color: $color-basic-white;
+  }
+
+  p {
+    font-family: "Roboto", "Geneva", sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    color: $color-special-grey;
+    margin: 0;
+  }
+
+  @media ($tablet-max-width) {
+    padding-left: 5px;
+  }
+
+  @media ($mobile-max-width) {
+    padding-left: 7px;
+
+    img {
+      width: 38px;
+      height: 38px;
+    }
+
+    span,
+    p {
+      display: none;
+    }
+  }
+}
+
+.main-nav__list-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 80%;
+
+  @media ($desktop-1440-width) {
+    width: 78%;
+  }
+
+  @media ($tablet-max-width) {
+    width: 60%;
+  }
+
+  @media ($mobile-max-width) {
+    width: 75%;
+  }
+}
+
+.main-nav__list {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  width: 80%;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  margin-top: 8px;
+  padding: 0;
+
+  a {
+    text-decoration: none;
+  }
+
+  @media ($desktop-1440-width) {
+    width: 75%;
+  }
+}
+
+.main-nav__item {
+  display: block;
+  margin: 0 34px;
+
+  svg {
+    display: inline-block;
+    fill: $color-decoration;
+  }
+
+  @media ($desktop-1200-width) {
+    margin: 0 10px;
+  }
+
+  @media ($tablet-max-width) {
+    margin: 0;
+    margin-left: 23px;
+
+    &--email svg {
+      width: 26px;
+      height: 19px;
+    }
+
+    &--tel svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  @media ($mobile-max-width) {
+    margin-left: 13px;
+  }
+
+  &:hover svg,
+  &:focus svg {
+    transition: all 0.3s ease-in-out;
+    transform: scale(1.3);
+  }
+
+  &:active svg {
+    transform: scale(1.1);
+    fill: $color-special-grey;
+  }
+
+  &:hover span,
+  &:focus span {
+    transition: all 0.3s ease-in-out;
+    text-decoration: underline;
+    color: $color-decoration;
+  }
+
+  &:active span {
+    color: $color-special-grey;
+  }
+}
+
+.main-nav__item a {
+  display: block;
+  padding: 10px;
+
+  @media ($tablet-max-width) {
+    padding: 5px;
+  }
+}
+
+.main-nav__item span {
+  @include font($main-font, 400);
+  display: inline-block;
+  font-size: 16px;
+  line-height: 18px;
+  color: $color-basic-white;
+  padding-left: 8px;
+
+  @media ($desktop-1200-width) {
+    display: none;
+  }
+
+  @media ($tablet-max-width) {
+    display: none;
+  }
+}
+
+.main-nav__button a {
+  display: block;
+  position: relative;
+  font-family: "Roboto Condensed", "Arial Black", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.05em;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: $color-basic-white;
+  border: 1px solid $color-basic-white;
+  border-radius: 5px;
+  padding: 16px 26px;
+  margin: 14px 0 10px 10px;
+  z-index: 1;
+
+  @media ($tablet-max-width) {
+    display: none;
+  }
+
+  &::after {
+    position: absolute;
+    content: "";
+    background-color: $color-decoration;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    transform: scale(0, 0);
+    transition: all 0.4s ease;
+  }
+
+  &:hover,
+  &:focus {
+    border: 1px solid $color-decoration;
+  }
+
+  &:active {
+    opacity: 0.8;
+    border: 1px solid $color-special-grey;
+  }
+
+  &:hover::after,
+  &:focus::after {
+    transform: scale(1, 1);
+    transition: all 0.4s ease-out;
+  }
+
+  &:active::after {
+    background-color: $color-special-grey;
+  }
+}
