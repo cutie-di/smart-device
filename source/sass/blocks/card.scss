@@ -2,14 +2,25 @@
   &:hover img,
   &:focus img {
     transition: all 0.5s ease-in-out;
-    filter: saturate(100%) blur(2px);
-    opacity: 0.6;
+    filter: saturate(100%) blur(1px);
+    opacity: 0.5;
   }
 
   &:hover a::before,
   &:focus a::before {
     transition: all 0.5s ease-in-out;
     background-color: $color-special-grey;
+  }
+
+  &:active img {
+    transition: all 0.5s ease-in-out;
+    filter: grayscale(100%) blur(2px);
+    opacity: 0.6;
+  }
+
+  &:active a::before {
+    transition: all 0.5s ease-in-out;
+    opacity: 0.8;
   }
 }
 
@@ -50,6 +61,27 @@
   z-index: 3;
   margin: 50px 44px;
   padding-right: 30%;
+
+  @media ($tablet-max-width) {
+    margin: 39px 44px;
+    padding-right: 64%;
+  }
+
+  @media ($mobile-max-width) {
+    margin: 20px 35px;
+    padding-right: 10%;
+  }
+}
+
+.card--spares h3 {
+  @media ($tablet-max-width) {
+    margin: 50px 44px;
+  }
+
+  @media ($mobile-max-width) {
+    margin: 30px 36px;
+    padding-right: 18%;
+  }
 }
 
 .card img {
@@ -66,7 +98,9 @@
 
   @media ($tablet-max-width) {
     min-width: 715px;
-    min-height: 256px;
+    height: 256px;
+    width: 100%;
+    object-fit: cover;
   }
 
   @media ($mobile-max-width) {

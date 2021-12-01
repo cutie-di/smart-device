@@ -17,7 +17,7 @@
   display: grid;
   grid-template-columns: 16% 26% 30% 1fr;
   margin: 0 auto;
-  padding: 23px calc(50% - 706px) 15px;
+  padding: 16px calc(50% - 706px) 15px;
 
   @media ($desktop-1440-width) {
     padding: 10px 25px;

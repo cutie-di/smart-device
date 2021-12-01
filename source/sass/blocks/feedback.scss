@@ -1,0 +1,88 @@
+.feedback {
+  position: relative;
+  background-color: $color-decoration;
+  background-image: url("../img/feedback/plane.png");
+  background-size: 511px 288px;
+  background-repeat: no-repeat;
+  background-position-y: 42%;
+  background-position-x: calc(50% - 355px);
+  overflow: hidden;
+
+
+  @media (min-resolution: 2dppx) {
+    background-image: url("../img/feedback/plane@2x.png");
+  }
+
+  &::before {
+    position: absolute;
+    content: "";
+    width: 671px;
+    height: 641px;
+    right: 51.3%;
+    transform: translateX(-10%);
+    top: 94px;
+    background-image: url("../img/feedback/plane-trigon_desktop.svg");
+    background-repeat: no-repeat;
+  }
+
+  &::after {
+    position: absolute;
+    content: "";
+    width: 343px;
+    height: 650px;
+    left: 50%;
+    transform: translateX(182%);
+    top: 41px;
+    background-image: url("../img/feedback/feedback-trigon_desktop.svg");
+    background-repeat: no-repeat;
+  }
+
+  @media ($desktop-1440-width) {
+    &::before {
+      left: 2%;
+    }
+  }
+
+  @media ($desktop-1200-width) {
+    background-position-x: calc(50% - 390px);
+
+    &::before {
+      left: -40px;
+    }
+  }
+
+  @media ($tablet-max-width) {
+    background-image: none;
+
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+}
+
+.feedback__wrapper {
+  padding: 78px calc(50% - 585px) 115px 50%;
+
+  @media ($desktop-1440-width) {
+    padding: 78px 3% 113px 47%;
+  }
+
+  @media ($desktop-1200-width) {
+    padding: 78px 3% 113px 40%;
+  }
+
+  @media ($tablet-max-width) {
+    padding: 68px 25px 105px;
+  }
+
+  @media ($mobile-max-width) {
+    padding: 18px 13px 41px;
+  }
+}
+
+.feedback__form {
+  position: relative;
+  background-color: $color-decoration;
+  z-index: 2;
+}

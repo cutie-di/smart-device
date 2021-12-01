@@ -55,11 +55,11 @@
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: $color-dark-background;
-  margin: 20px 0;
+  margin: 20px 0 25px;
 
-  @media ($tablet-max-width) {
-    margin: 20px 0 25px;
-  }
+  //@media ($tablet-max-width) {
+  //  margin: 20px 0 25px;
+  //}
 
   @media ($mobile-max-width) {
     position: relative;

@@ -1,6 +1,14 @@
 .services {
   background-color: $color-dark-background;
   padding: 70px 0 122px;
+
+  @media ($tablet-max-width) {
+    padding: 30px 0 73px;
+  }
+
+  @media ($mobile-max-width) {
+    padding: 10px 0 59px;
+  }
 }
 
 .services__wrapper {
@@ -26,12 +34,16 @@
   margin: 20px 0 53px;
 
   @media ($tablet-max-width) {
+    font-size: 32px;
     line-height: 45px;
+    margin: 20px 0 49px;
+    margin-right: 14%;
   }
 
   @media ($mobile-max-width) {
     font-size: 28px;
     line-height: 39px;
+    margin: 41px 5px 41px 10px;
   }
 }
 
@@ -45,10 +57,10 @@
 
   @media ($tablet-max-width) {
     grid-template-columns: 1fr;
-    gap: 46px;
+    gap: 41px;
   }
 
   @media ($mobile-max-width) {
-    gap: 30px;
+    gap: 25px;
   }
 }
