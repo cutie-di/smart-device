@@ -1,13 +1,13 @@
 .services {
   background-color: $color-dark-background;
-  padding: 70px 0 119px;
+  padding: 70px 0 123px;
 
   @media ($tablet-max-width) {
     padding: 30px 0 73px;
   }
 
   @media ($mobile-max-width) {
-    padding: 10px 0 59px;
+    padding: 10px 0 58px;
   }
 }
 
@@ -18,7 +18,7 @@
   }
 
   @media ($tablet-max-width) {
-    padding: 0 23px 0 25px;
+    padding: 0 24px 0 25px;
   }
 
   @media ($mobile-max-width) {
@@ -31,7 +31,7 @@
   font-size: 36px;
   line-height: 51px;
   color: $color-basic-white;
-  margin: 20px 0 53px;
+  margin: 20px 0 49px;
 
   @media ($tablet-max-width) {
     font-size: 32px;

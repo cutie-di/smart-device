@@ -25,6 +25,7 @@
 }
 
 .card a {
+  display: block;
   position: relative;
   cursor: pointer;
 
@@ -34,8 +35,8 @@
     background-color: $color-decoration;
     width: 63px;
     height: 63px;
-    right: 1px;
-    bottom: 4px;
+    right: 0;
+    bottom: 5px;
     z-index: 2;
   }
 
@@ -60,7 +61,7 @@
   color: $color-basic-white;
   z-index: 3;
   margin: 48px 44px;
-  padding-right: 30%;
+  padding-right: 33%;
 
   @media ($tablet-max-width) {
     margin: 39px 44px;
