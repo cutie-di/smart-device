@@ -31,11 +31,11 @@ smoothAnchorScroll();
 // accordion
 
 var pageBody = document.querySelector('.page-body');
+pageBody.classList.remove('nojs');
+
 var accordionItems = document.querySelectorAll('.navigation__accordion-item');
 
 function onButtonClick() {
-  pageBody.classList.remove('nojs');
-
   accordionItems.forEach(function (item) {
     item.addEventListener('click', function (evt) {
       var self = evt.currentTarget;
@@ -144,6 +144,8 @@ forms.forEach(function (form) {
   var nameInput = form.querySelector('input[type="text"]');
   var phoneInput = form.querySelector('input[type="tel"]');
   var feedbackTextarea = form.querySelector('textarea');
+
+  phoneInput.removeAttribute('pattern');
 
   var storageName = '';
   var storagePhone = '';
