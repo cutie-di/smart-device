@@ -107,6 +107,10 @@
   margin-top: 8px;
   padding: 0;
 
+  @media ($tablet-max-width) {
+    margin-top: 14px;
+  }
+
   a {
     text-decoration: none;
   }

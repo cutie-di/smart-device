@@ -19,10 +19,17 @@
     &::before {
       width: 559px;
       height: 873px;
-      right: 0;
-      top: 85px;
+      right: 36%;
+      transform: translateX(49.5%);
+      top: 91px;
       background-image: url("../img/faq-bg_tablet.svg");
-      margin-left: auto;
+    }
+  }
+
+  @media ($mobile-max-width) {
+    &::before {
+      right: 49.2%;
+      top: 36.2%;
     }
   }
 }
@@ -31,7 +38,7 @@
   position: relative;
   z-index: 2;
   margin-top: 114px;
-  margin-bottom: 104px;
+  margin-bottom: 107px;
 
   @media ($desktop-1440-width) {
     padding-left: 45px;
@@ -47,7 +54,7 @@
 
   @media ($mobile-max-width) {
     margin-top: 36px;
-    margin-bottom: 66px;
+    margin-bottom: 64px;
     padding-left: 15px;
     padding-right: 15px;
   }
@@ -77,6 +84,7 @@
   cursor: pointer;
   min-height: 299px;
   background-color: $color-basic-white;
+  border: 1px solid $color-border;
   border-left: 3px solid $color-decoration;
   padding: 40px;
   padding-bottom: 50px;
@@ -87,7 +95,7 @@
   }
 
   @media ($mobile-max-width) {
-    padding: 25px 14px 19px 23px;
+    padding: 25px 13px 19px 23px;
   }
 
   &:hover,
@@ -144,7 +152,7 @@
   font-size: 16px;
   line-height: 22px;
   color: $color-text-dark;
-  margin: 17px 0;
+  margin: 16px 0;
 
   @media ($tablet-max-width) {
     margin: 7px 0;
@@ -159,33 +167,61 @@
   }
 }
 
-@media ($tablet-max-width) {
-  .faq__item--conf span {
-    //margin: 17px 0;
-    margin: 2px 0;
+.faq__item--conf {
+  span {
+    margin: 16px 0 12px;
+
+    @media ($tablet-max-width) {
+      margin: 7px 0 14px;
+    }
+
+    @media ($mobile-max-width) {
+      margin: 8px 0;
+    }
+  }
+
+  svg {
+    @media ($tablet-max-width) {
+      width: 31px;
+      height: 26px;
+    }
+  }
+
+  p {
+    @media ($mobile-max-width) {
+      margin: 17px 0;
+    }
   }
 }
 
-@media ($mobile-max-width) {
-  .faq__item--conf svg {
-    width: 31px;
-    height: 26px;
+.faq__item--delivery {
+  svg {
+    @media ($tablet-max-width) {
+      width: 32px;
+      height: 32px;
+    }
   }
 
-  .faq__item--conf span {
-    margin: 8px 0;
-  }
+  span {
+    @media ($tablet-max-width) {
+      margin: 5px 0;
+    }
 
-  .faq__item--conf p {
-    margin: 17px 0;
+    @media ($mobile-max-width) {
+      margin: 6px 0;
+    }
   }
+}
 
-  .faq__item--price {
+.faq__item--price {
+  @media ($mobile-max-width) {
     padding-bottom: 2px;
   }
 
-  .faq__item--price p {
-    margin: 17px 0;
+  p {
+    @media ($mobile-max-width) {
+      margin: 17px 0;
+    }
   }
 }
 
@@ -261,9 +297,10 @@
   font-size: 16px;
   color: $color-text-dark;
   line-height: 22px;
-  margin: 22px 0;
+  margin: 19px 0;
 
   @media ($tablet-max-width) {
+    margin: 22px 0;
     margin-left: 3px;
   }
 
@@ -305,7 +342,7 @@
   border: 1px solid $color-decoration;
   border-radius: 5px;
   padding: 16px 48px;
-  margin-top: 12px;
+  margin-top: 20px;
   z-index: 1;
 
   @media ($tablet-max-width) {

@@ -30,7 +30,7 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  padding: 260px calc(50% - 782px) 102px;
+  padding: 260px calc(50% - 782px) 103px;
 
 
   @media ($desktop-1440-width) {
@@ -125,7 +125,7 @@
   @media ($tablet-max-width) {
     font-size: 18px;
     line-height: 29px;
-    margin: 30px 0;
+    margin: 28px 0;
     padding-left: 50px;
 
     &::before {

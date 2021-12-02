@@ -35,7 +35,7 @@
   }
 
   @media ($mobile-max-width) {
-    padding: 19px 15px;
+    padding: 19px 15px 15px;
   }
 }
 
@@ -85,8 +85,8 @@
   }
 }
 
-.copywrite__rights,
-.copywrite__company-activity {
+.copyright__rights,
+.copyright__company-activity {
   @media ($tablet-max-width) {
     display: none;
   }

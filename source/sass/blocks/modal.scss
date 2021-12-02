@@ -18,14 +18,14 @@
 
 .modal__wrapper {
   position: absolute;
-  top: 34%;
+  top: 38%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 12;
   width: 490px;
   background-color: $color-decoration;
 
-  @media ($desktop-1600-width) {
+  @media ($desktop-1780-width) {
     top: 50%;
   }
 }
