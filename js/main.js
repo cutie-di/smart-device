@@ -229,7 +229,7 @@ function scrollToElement(element) {
 }
 
 function smoothAnchorScroll() {
-  var smoothLinks = document.querySelector('a[href^="#"]:not(a[href="#"]');
+  var smoothLinks = document.querySelectorAll('a[href^="#"]:not(a[href="#"]');
   smoothLinks.forEach(function (smoothLink) {
     smoothLink.addEventListener('click', function (evt) {
       evt.preventDefault();
