@@ -6,28 +6,6 @@ function isEscEvent(evt) {
   return evt.keyCode === 27 || evt.key === 'Escape' || evt.key === 'Esc';
 }
 
-// scroll
-
-function scrollToElement(element) {
-  element.scrollIntoView({
-    behavior: 'smooth',
-    block: 'start',
-  });
-}
-
-function smoothAnchorScroll() {
-  var smoothLinks = document.querySelectorAll('a[href^="#"]:not(a[href="#"]');
-  smoothLinks.forEach(function (smoothLink) {
-    smoothLink.addEventListener('click', function (evt) {
-      evt.preventDefault();
-      var id = smoothLink.getAttribute('href');
-      scrollToElement(document.querySelector(id));
-    });
-  });
-}
-
-smoothAnchorScroll();
-
 // accordion
 
 var pageBody = document.querySelector('.page-body');
@@ -240,3 +218,25 @@ function openPopup() {
 }
 
 openPopup();
+
+// scroll
+
+function scrollToElement(element) {
+  element.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start',
+  });
+}
+
+function smoothAnchorScroll() {
+  var smoothLink = document.querySelector('a[href^="#"]:not(a[href="#"]');
+  // smoothLinks.forEach(function (smoothLink) {
+  smoothLink.addEventListener('click', function (evt) {
+    evt.preventDefault();
+    var id = smoothLink.getAttribute('href');
+    scrollToElement(document.querySelector(id));
+  });
+  // });
+}
+
+smoothAnchorScroll();
