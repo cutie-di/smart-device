@@ -4,6 +4,7 @@
 @import "global/fonts.scss";
 @import "global/global.scss";
 @import "global/container.scss";
+@import "global/overlay.scss";
 
 // Blocks //
 
@@ -18,3 +19,5 @@
 @import "blocks/socials.scss";
 @import "blocks/navigation.scss";
 @import "blocks/copywrite.scss";
+@import "blocks/modal.scss";
+@import "blocks/popup-form.scss";

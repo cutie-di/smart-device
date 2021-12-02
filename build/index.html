@@ -48,7 +48,7 @@
             </li>
           </ul>
           <div class="main-nav__button">
-            <a href="#modal" aria-label="Кнопка «Заказать звонок»">
+            <a href="#" aria-label="Кнопка «Заказать звонок»">
               Заказать звонок
             </a>
           </div>
@@ -221,21 +221,28 @@
     <section class="feedback" id="feedback">
       <div class="feedback__wrapper">
         <div class="feedback__form form">
-          <form class="form__content" method="post" action="https://echo.htmlacademy.ru">
+          <form class="form__content" method="post" name="feedback-form" action="https://echo.htmlacademy.ru">
             <h3>Остались вопросы? Задайте их нам!</h3>
             <span>Мы проконсультируем Вас бесплатно</span>
             <div class="form__input-wrapper">
-              <input type="text" id="form-name" name="user-name" placeholder="Имя" autocomplete="off" aria-label="Поле ввода имени" required="">
+              <input type="text" id="form-name" name="name" placeholder="Имя" autocomplete="off" aria-label="Поле ввода имени" pattern="^[A-Za-zА-Яа-яЁё\s]+$" title="Имя Фамилия / Name Surname" required="">
               <label class="visually-hidden" for="form-name">Введите Ваше Имя</label>
-              <input placeholder="Телефон" type="tel" id="form-tel" name="user-tel" minlength="10" maxlength="17" autocomplete="off" aria-label="Поле ввода номера телефона" required="">
+
+              <input placeholder="Телефон" type="tel" id="form-tel" name="phone" minlength="10" maxlength="17" autocomplete="off" aria-label="Поле ввода номера телефона" pattern="^[1-9]+[0-9]*$" title="+7 000 000 00 00" required="">
               <label class="visually-hidden" for="form-tel">Введите Ваш номер телефона</label>
-              <textarea id="form-textarea" placeholder="Ваш вопрос"></textarea>
+
+              <textarea id="form-textarea" name="feedback" placeholder="Ваш вопрос" required=""></textarea>
               <label class="visually-hidden" for="form-textarea">Введите Ваш вопрос</label>
-              <input class="visually-hidden" type="checkbox" id="form-checkbox" aria-label="Обязательное поле согласия на обработку персональных данных" required="">
-              <label for="form-checkbox">Я согласен на обработку персональных данных</label>
+
               <button type="submit" aria-label="Кнопка «Задать вопрос»">
                 Задать вопрос
               </button>
+
+              <div class="form__checkbox-wrapper">
+                <input type="checkbox" id="form-checkbox" aria-label="Обязательное поле согласия на обработку персональных данных" required="">
+                <label for="form-checkbox">Я согласен на обработку персональных данных</label>
+              </div>
+
             </div>
           </form>
         </div>
@@ -285,6 +292,8 @@
 
       <section class="navigation">
         <ul class="navigation__accordion-list">
+
+          <!--navigation__accordion-item--active-->
           <li class="navigation__accordion-item">
             <div class="navigation__button-wrapper">
               <h3>Разделы сайта</h3>
@@ -327,27 +336,39 @@
     </div>
   </footer>
 
-  <section class="modal display-none">
-    <div class="modal__wrapper form">
-      <form class="form__content" method="post" action="https://echo.htmlacademy.ru">
+  <!--modal--show  overlay--show page-no-scroll-->
+  <section class="modal">
+    <div class="modal__wrapper form popup-form">
+      <form class="popup-form__content" method="post" name="feedback-form" action="https://echo.htmlacademy.ru">
+        <button type="button" aria-label="Закрыть окно заказа звонка"></button>
         <h3>Закажите звонок</h3>
         <span>Оставьте контакты, мы проконсультируем вас бесплатно в удобное время</span>
-        <input type="text" id="modal-name" name="user-name" placeholder="Имя" autocomplete="off" required="">
-        <label class="visually-hidden" for="modal-name">Введите Ваше Имя</label>
-        <input placeholder="Телефон" type="tel" id="modal-tel" name="user-tel" minlength="10" maxlength="17" autocomplete="off" required="">
-        <label class="visually-hidden" for="modal-tel">Введите Ваш номер телефона</label>
-        <textarea id="modal-textarea" placeholder="Ваш вопрос"></textarea>
-        <label class="visually-hidden" for="modal-textarea">Введите Ваш вопрос</label>
-        <input type="checkbox" id="modal-checkbox" required="">
-        <label for="modal-checkbox">Я согласен на обработку персональных данных</label>
-        <button type="submit" aria-label="Кнопка «Задать вопрос»">
-          Отправить
-        </button>
+        <div class="popup-form__input-wrapper">
+          <input type="text" id="modal-name" name="name" placeholder="Имя" autocomplete="off" aria-label="Поле ввода имени" pattern="^[A-Za-zА-Яа-яЁё\s]+$" title="Имя Фамилия / Name Surname" required="">
+          <label class="visually-hidden" for="modal-name">Введите Ваше Имя</label>
+
+          <input placeholder="Телефон" type="tel" id="modal-tel" name="phone" minlength="10" maxlength="17" autocomplete="off" aria-label="Поле ввода номера телефона" pattern="^[1-9]+[0-9]*$" title="+7 000 000 00 00" required="">
+          <label class="visually-hidden" for="modal-tel">Введите Ваш номер телефона</label>
+
+          <textarea id="modal-textarea" name="feedback" placeholder="Ваш вопрос" required=""></textarea>
+          <label class="visually-hidden" for="modal-textarea">Введите Ваш вопрос</label>
+
+          <button type="submit" aria-label="Кнопка «Задать вопрос»">
+            Отправить
+          </button>
+
+          <div class="popup-form__checkbox-wrapper">
+            <input type="checkbox" id="modal-checkbox" aria-label="Обязательное поле согласия на обработку персональных данных" required="">
+            <label for="modal-checkbox">Я согласен на обработку персональных данных</label>
+          </div>
+
+        </div>
       </form>
     </div>
+    <div class="overlay"></div>
   </section>
 
-  <script src="js/main.js"></script>
+  <!--<script src="js/main.js"></script>-->
 
 </body>
 

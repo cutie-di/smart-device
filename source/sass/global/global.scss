@@ -36,6 +36,11 @@
   min-width: $min-width;
 }
 
+.page-body::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
 .display-none {
   display: none;
 }
@@ -48,17 +53,3 @@
   font-family: $family;
   font-weight: $weight;
 }
-
-//@include font($main-font, 400);
-
-//$main-font: "PT Mono", "Courier", monospace;
-//400
-
-//$title-font: "Roboto Condensed", "Arial", sans-serif;
-//400
-
-//"Roboto Condensed", "Arial Black", sans-serif;
-//700
-
-//"Roboto", "Geneva", sans-serif
-//500
