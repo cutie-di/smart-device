@@ -1,4 +1,4 @@
-.popup-form__content {
+.popup-form {
   padding: 30px 37px 38px;
 }
 
@@ -9,7 +9,7 @@
   margin-top: 30px;
 }
 
-.popup-form__content button[type="button"] {
+.popup-form button[type="button"] {
   display: block;
   position: absolute;
   width: 30px;
@@ -52,7 +52,7 @@
   }
 }
 
-.popup-form__content h3 {
+.popup-form h3 {
   @include font($title-font, 400);
   font-size: 28px;
   line-height: 39px;
@@ -60,7 +60,7 @@
   margin: 0 0 12px;
 }
 
-.popup-form__content span {
+.popup-form span {
   @include font($main-font, 400);
   display: block;
   font-size: 16px;
@@ -70,7 +70,7 @@
   margin-right: 4%;
 }
 
-.popup-form__content input {
+.popup-form input {
   @include font($main-font, 400);
   display: block;
   font-size: 16px;
@@ -81,11 +81,11 @@
   padding: 15px 25px;
 }
 
-.popup-form__content input::placeholder {
+.popup-form input::placeholder {
   color: $color-basic-white;
 }
 
-.popup-form__content textarea {
+.popup-form textarea {
   @include font($main-font, 400);
   display: block;
   font-size: 16px;
@@ -98,7 +98,7 @@
   padding: 15px 25px;
 }
 
-.popup-form__content textarea::placeholder {
+.popup-form textarea::placeholder {
   color: $color-basic-white;
 }
 
@@ -106,7 +106,7 @@
   position: relative;
 }
 
-.popup-form__content input[type="checkbox"] {
+.popup-form input[type="checkbox"] {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -121,7 +121,7 @@
   overflow: hidden;
 }
 
-.popup-form__content input[type="checkbox"] + label {
+.popup-form input[type="checkbox"] + label {
   @include font($main-font, 400);
   display: block;
   font-size: 14px;
@@ -144,7 +144,7 @@
   }
 }
 
-.popup-form__content input[type="checkbox"]:checked + label {
+.popup-form input[type="checkbox"]:checked + label {
   &::after {
     position: absolute;
     content: "";
@@ -157,20 +157,20 @@
   }
 }
 
-.popup-form__content input:hover,
-.popup-form__content input:focus,
-.popup-form__content textarea:hover,
-.popup-form__content textarea:focus {
+.popup-form input:hover,
+.popup-form input:focus,
+.popup-form textarea:hover,
+.popup-form textarea:focus {
   outline: 2px solid $color-white-opacity-08;
   outline-offset: -2px;
 }
 
-.popup-form__content input[type="checkbox"]:hover + label::before,
-.popup-form__content input[type="checkbox"]:focus + label::before {
+.popup-form input[type="checkbox"]:hover + label::before,
+.popup-form input[type="checkbox"]:focus + label::before {
   outline: 2px solid $color-white-opacity-08;
 }
 
-.popup-form__content button[type="submit"] {
+.popup-form button[type="submit"] {
   position: relative;
   font-family: "Roboto Condensed", "Arial Black", sans-serif;
   font-weight: 700;

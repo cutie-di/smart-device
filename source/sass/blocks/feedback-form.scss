@@ -1,5 +1,4 @@
-.form__content {
-
+.feedback-form {
   margin-left: 11px;
 
   @media ($tablet-max-width) {
@@ -11,7 +10,7 @@
   }
 }
 
-.form__input-wrapper {
+.feedback-form__input-wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -29,7 +28,7 @@
   }
 }
 
-.form__content h3 {
+.feedback-form h3 {
   @include font($title-font, 400);
   font-size: 36px;
   line-height: 51px;
@@ -47,7 +46,7 @@
   }
 }
 
-.form__content span {
+.feedback-form span {
   @include font($main-font, 400);
   display: block;
   font-size: 16px;
@@ -66,7 +65,7 @@
   }
 }
 
-.form__content input {
+.feedback-form input {
   @include font($main-font, 400);
   display: block;
   font-size: 16px;
@@ -87,11 +86,11 @@
   }
 }
 
-.form__content input::placeholder {
+.feedback-form input::placeholder {
   color: $color-basic-white;
 }
 
-.form__content textarea {
+.feedback-form textarea {
   @include font($main-font, 400);
   display: block;
 
@@ -120,11 +119,11 @@
   }
 }
 
-.form__content textarea::placeholder {
+.feedback-form textarea::placeholder {
   color: $color-basic-white;
 }
 
-.form__checkbox-wrapper {
+.feedback-form__checkbox-wrapper {
   position: relative;
   width: 49%;
 
@@ -133,7 +132,7 @@
   }
 }
 
-.form__content input[type="checkbox"] {
+.feedback-form input[type="checkbox"] {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -148,7 +147,7 @@
   overflow: hidden;
 }
 
-.form__content input[type="checkbox"] + label {
+.feedback-form input[type="checkbox"] + label {
   @include font($main-font, 400);
   display: block;
   font-size: 14px;
@@ -186,7 +185,7 @@
   }
 }
 
-.form__content input[type="checkbox"]:checked + label {
+.feedback-form input[type="checkbox"]:checked + label {
   &::after {
     position: absolute;
     content: "";
@@ -207,20 +206,20 @@
 }
 
 
-.form__content input:hover,
-.form__content input:focus,
-.form__content textarea:hover,
-.form__content textarea:focus {
+.feedback-form input:hover,
+.feedback-form input:focus,
+.feedback-form textarea:hover,
+.feedback-form textarea:focus {
   outline: 2px solid $color-white-opacity-08;
   outline-offset: -2px;
 }
 
-.form__content input[type="checkbox"]:hover + label::before,
-.form__content input[type="checkbox"]:focus + label::before {
+.feedback-form input[type="checkbox"]:hover + label::before,
+.feedback-form input[type="checkbox"]:focus + label::before {
   outline: 2px solid $color-white-opacity-08;
 }
 
-.form__content button {
+.feedback-form button {
   position: relative;
   font-family: "Roboto Condensed", "Arial Black", sans-serif;
   font-weight: 700;
