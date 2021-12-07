@@ -15,7 +15,9 @@
 
 .copyright__wrapper {
   display: grid;
-  grid-template-columns: 16% 26% 30% 1fr;
+  grid-template-columns: repeat(2, max-content) auto max-content;
+  column-gap: 72px;
+  row-gap: 15px;
   margin: 0 auto;
   padding: 16px calc(50% - 706px) 15px;
 
@@ -24,13 +26,15 @@
   }
 
   @media ($desktop-1200-width) {
-    grid-template-columns: 1fr 1fr;
+    column-gap: 50px;
   }
 
   @media ($tablet-max-width) {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
+    column-gap: 0;
+    row-gap: 0;
     padding: 22px 25px;
   }
 
@@ -43,24 +47,11 @@
   @include font($main-font, 400);
   font-size: 13px;
   line-height: 24px;
+  justify-self: start;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   text-decoration: none;
   color: $color-dark-opacity-05;
-  margin: 0;
-  margin-right: 10px;
-
-  &:last-child {
-    margin-left: auto;
-    margin-right: 0;
-  }
-
-  @media ($desktop-1200-width) {
-    &:nth-child(even) {
-      margin-left: auto;
-      margin-right: 0;
-    }
-  }
 
   @media ($mobile-max-width) {
     text-align: center;
@@ -83,6 +74,18 @@
     color: $color-special-grey;
     text-decoration: none;
   }
+}
+
+.copyright__confidentiality {
+  margin-left: 70px;
+
+  @media ($desktop-1200-width) {
+    margin-left: 0;
+  }
+}
+
+.copyright__design {
+  justify-self: end;
 }
 
 .copyright__rights,

@@ -109,7 +109,7 @@
 
 .navigation__accordion-item a {
   @include font($main-font, 400);
-  display: block;
+  display: inline-block;
   font-size: 15px;
   line-height: 25px;
   text-decoration: none;
@@ -139,6 +139,15 @@
 
   @media ($desktop-1200-width) {
     columns: 1;
+  }
+}
+
+.navigation__category-list li {
+  display: block;
+  margin-right: 50px;
+
+  @media ($desktop-1440-width) {
+    margin-right: 10px;
   }
 }
 

@@ -1,29 +1,3 @@
-.card {
-  &:hover img,
-  &:focus img {
-    transition: all 0.5s ease-in-out;
-    filter: saturate(100%) blur(1px);
-    opacity: 0.5;
-  }
-
-  &:hover a::before,
-  &:focus a::before {
-    transition: all 0.5s ease-in-out;
-    background-color: $color-special-grey;
-  }
-
-  &:active img {
-    transition: all 0.5s ease-in-out;
-    filter: grayscale(100%) blur(2px);
-    opacity: 0.6;
-  }
-
-  &:active a::before {
-    transition: all 0.5s ease-in-out;
-    opacity: 0.8;
-  }
-}
-
 .card a {
   display: block;
   position: relative;
@@ -50,6 +24,30 @@
     right: 27px;
     bottom: 32px;
     z-index: 3;
+  }
+
+  &:hover img,
+  &:focus img {
+    transition: all 0.5s ease-in-out;
+    filter: saturate(100%) blur(1px);
+    opacity: 0.5;
+  }
+
+  &:hover a::before,
+  &:focus a::before {
+    transition: all 0.5s ease-in-out;
+    background-color: $color-special-grey;
+  }
+
+  &:active img {
+    transition: all 0.5s ease-in-out;
+    filter: grayscale(100%) blur(2px);
+    opacity: 0.6;
+  }
+
+  &:active a::before {
+    transition: all 0.5s ease-in-out;
+    opacity: 0.8;
   }
 }
 

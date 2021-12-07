@@ -42,36 +42,19 @@
 }
 
 .socials__logo {
-  display: flex;
+  display: block;
   padding-top: 19px;
   margin-bottom: 48px;
 
   img {
-    width: 52px;
+    display: block;
+    width: 216px;
     height: 52px;
   }
 
   div {
     padding-top: 7px;
     padding-left: 16px;
-  }
-
-  span {
-    display: block;
-    font-family: "Roboto Condensed", "Arial Black", sans-serif;
-    font-weight: 700;
-    font-size: 25px;
-    line-height: 29px;
-    color: $color-logo-dark;
-  }
-
-  p {
-    font-family: "Roboto", "Geneva", sans-serif;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 14px;
-    color: $color-special-grey;
-    margin: 0;
   }
 
   @media ($tablet-max-width) {
@@ -131,7 +114,9 @@
     height: 27px;
     fill: $color-socials;
   }
+}
 
+.socials__item a {
   &:hover svg,
   &:focus svg {
     transition: all 0.3s ease-in-out;

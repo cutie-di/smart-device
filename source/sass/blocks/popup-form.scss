@@ -12,13 +12,14 @@
 .popup-form button[type="button"] {
   display: block;
   position: absolute;
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 38px;
   border: none;
+  cursor: pointer;
   background-color: $color-decoration;
   padding: 16px;
   right: 10px;
-  top: 010px;
+  top: 10px;
 
   &::before,
   &::after {
@@ -76,6 +77,8 @@
   font-size: 16px;
   line-height: 22px;
   border: none;
+  border-radius: 0;
+  cursor: pointer;
   color: $color-basic-white;
   background-color: $color-white-opacity-01;
   padding: 15px 25px;
@@ -91,6 +94,8 @@
   font-size: 16px;
   line-height: 22px;
   border: none;
+  border-radius: 0;
+  cursor: pointer;
   color: $color-basic-white;
   background-color: $color-white-opacity-01;
   height: 104px;
@@ -104,6 +109,7 @@
 
 .popup-form__checkbox-wrapper {
   position: relative;
+  order: 10;
 }
 
 .popup-form input[type="checkbox"] {
@@ -124,9 +130,10 @@
 .popup-form input[type="checkbox"] + label {
   @include font($main-font, 400);
   display: block;
+  position: relative;
   font-size: 14px;
   line-height: 16px;
-  position: relative;
+  cursor: pointer;
   color: $color-white-opacity-08;
   padding-left: 50px;
   padding-top: 6px;
@@ -179,6 +186,7 @@
   text-align: center;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  cursor: pointer;
   color: $color-basic-white;
   background-color: transparent;
   border: 1px solid $color-basic-white;
