@@ -5,6 +5,14 @@
 function isEscEvent(evt) {
   return evt.keyCode === 27 || evt.key === 'Escape' || evt.key === 'Esc';
 }
+function isEnterEvent(evt) {
+  return evt.keyCode === 13 || evt.key === 'Enter';
+}
+
+
+function isTabPressed(evt) {
+  return evt.keyCode === 9 || evt.key === 'Tab';
+}
 
 // accordion
 
@@ -18,22 +26,27 @@ function onButtonClick() {
     item.addEventListener('click', function (evt) {
       var self = evt.currentTarget;
 
-      var control = self.querySelector('.navigation__button');
-      var content = self.querySelector('.navigation__inner-list');
+      var currentControl = self.querySelector('.navigation__button');
+      var currentContent = self.querySelector('.navigation__inner-list');
 
       if (self.classList.contains('navigation__accordion-item--active')) {
         self.classList.remove('navigation__accordion-item--active');
 
-
-        control.setAttribute('aria-expanded', true);
-        content.setAttribute('aria-hidden', false);
+        currentControl.setAttribute('aria-expanded', 'false');
+        currentContent.setAttribute('aria-hidden', 'true');
       } else {
         accordionItems.forEach((function (el) {
-          el.classList.remove('navigation__accordion-item--active');
+          if (el !== self) {
+            var previousControl = el.querySelector('.navigation__button');
+            var previousContent = el.querySelector('.navigation__inner-list');
+            el.classList.remove('navigation__accordion-item--active');
+            previousControl.setAttribute('aria-expanded', 'false');
+            previousContent.setAttribute('aria-hidden', 'true');
+          }
         }));
         self.classList.add('navigation__accordion-item--active');
-        control.setAttribute('aria-expanded', false);
-        content.setAttribute('aria-hidden', true);
+        currentControl.setAttribute('aria-expanded', 'true');
+        currentContent.setAttribute('aria-hidden', 'false');
       }
     });
   });
@@ -181,6 +194,8 @@ function closePopup() {
   modal.classList.remove('modal--show');
   overlay.classList.remove('overlay--show');
   document.body.classList.remove('page-no-scroll');
+
+  openButton.focus();
 }
 
 function closeOnButton(evt) {
@@ -188,6 +203,14 @@ function closeOnButton(evt) {
   closePopup();
   closeButton.removeEventListener('click', closeOnButton);
 }
+
+function closeOnEnter(evt) {
+  if (isEnterEvent(evt)) {
+    closePopup();
+    closeButton.removeEventListener('keydown', closeOnButton);
+  }
+}
+
 
 function closeOnOverlay(evt) {
   evt.preventDefault();
@@ -212,12 +235,42 @@ function openPopup() {
     popupNameInput.focus();
 
     closeButton.addEventListener('click', closeOnButton);
+    closeButton.addEventListener('keydown', closeOnEnter);
     overlay.addEventListener('click', closeOnOverlay);
     document.addEventListener('keydown', closeOnEsc);
   });
 }
 
 openPopup();
+
+// focus
+
+function trapFocus(element) {
+
+  var focusableEls = modal.querySelectorAll('input,button,textarea');
+  var firstFocusableEl = focusableEls[0];
+  var lastFocusableEl = focusableEls[focusableEls.length - 1];
+
+  element.addEventListener('keydown', function (evt) {
+    if (!isTabPressed) {
+      return;
+    }
+
+    if (evt.shiftKey) {
+      if (document.activeElement === firstFocusableEl) {
+        lastFocusableEl.focus();
+        evt.preventDefault();
+      }
+    } else {
+      if (document.activeElement === lastFocusableEl) {
+        firstFocusableEl.focus();
+        evt.preventDefault();
+      }
+    }
+  });
+}
+
+trapFocus(modal);
 
 // scroll
 
