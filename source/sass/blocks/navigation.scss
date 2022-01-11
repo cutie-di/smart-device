@@ -48,7 +48,19 @@
   }
 }
 
-.navigation__accordion-item h3 {
+.navigation__trigger {
+  display: block;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+
+  @media ($mobile-max-width) {
+    width: 100%;
+  }
+}
+
+.navigation__trigger h3 {
   @include font($title-font, 400);
   font-size: 15px;
   line-height: 16px;
@@ -59,39 +71,9 @@
 
   @media ($mobile-max-width) {
     position: relative;
+    text-align: start;
     margin: 0;
-    padding: 28px 15px;
-  }
-}
-
-.navigation__button-wrapper {
-  @media ($mobile-max-width) {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-}
-
-.navigation__button--wrapper {
-  @media ($mobile-max-width) {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-}
-
-.navigation__button {
-  display: none;
-
-  @media ($mobile-max-width) {
-    display: block;
-    position: relative;
-    border: none;
-    background-color: transparent;
-    width: 16px;
-    height: 16px;
-    margin: auto 16px;
-    padding: 4px;
+    padding: 30px 15px 27px;
 
     &::after {
       position: absolute;
@@ -99,7 +81,7 @@
       background-image: url("../img/sprite/icon-plus.svg");
       width: 16px;
       height: 16px;
-      right: 0;
+      right: 17px;
       top: 50%;
       transform: translateY(-50%);
       background-repeat: no-repeat;
@@ -151,7 +133,7 @@
   }
 }
 
-.navigation__inner-list {
+.navigation__inner-content {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -164,16 +146,17 @@
 
   @media ($mobile-max-width) {
     display: none;
+    overflow: hidden;
+    height: 0;
+    transition: height 1s ease-in-out;
+    animation: fade 1s ease-in-out;
+    margin: 0;
+    padding-top: 5px;
+    padding-bottom: 26px;
   }
 }
 
-.navigation__accordion-item--active .navigation__inner-list {
-  @media ($mobile-max-width) {
-    display: block;
-  }
-}
-
-.navigation__accordion-item--active .navigation__button {
+.navigation__trigger--active h3 {
   &::after {
     background-image: url("../img/sprite/icon-minus.svg");
     width: 16px;
@@ -181,14 +164,36 @@
   }
 }
 
-.nojs .navigation__inner-list {
+.navigation__inner-content--active {
   @media ($mobile-max-width) {
+    height: auto;
     display: block;
   }
 }
 
-.nojs .navigation__button {
+.nojs .navigation__inner-content {
   @media ($mobile-max-width) {
-    display: none;
+    max-width: auto;
+    display: block;
+  }
+}
+
+.nojs .navigation__trigger h3 {
+  @media ($mobile-max-width) {
+    &::after {
+      display: none;
+    }
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+
+  to {
+    opacity: 10;
+    transform: translateY(0);
   }
 }

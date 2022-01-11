@@ -1,5 +1,3 @@
-'use strict';
-
 // utils
 
 function isEscEvent(evt) {
@@ -14,59 +12,95 @@ function isTabPressed(evt) {
   return evt.keyCode === 9 || evt.key === 'Tab';
 }
 
-// accordion
+// remove nojs
 
-var pageBody = document.querySelector('.page-body');
+const pageBody = document.querySelector('.page-body');
 pageBody.classList.remove('nojs');
 
-var accordionItems = document.querySelectorAll('.navigation__accordion-item');
+// accordion
 
-function onButtonClick() {
-  accordionItems.forEach(function (item) {
-    item.addEventListener('click', function (evt) {
-      var self = evt.currentTarget;
+const accordionTriggers = document.querySelectorAll('.navigation__trigger');
 
-      var currentControl = self.querySelector('.navigation__button');
-      var currentContent = self.querySelector('.navigation__inner-list');
+const accordionTriggerDisable = (trigger) => {
+  trigger.disabled = true;
+  setTimeout(() => {
+    trigger.disabled = false;
+  }, 500);
+};
 
-      if (self.classList.contains('navigation__accordion-item--active')) {
-        self.classList.remove('navigation__accordion-item--active');
+const setHeightOnTransitionEnd = (body) => {
+  body.addEventListener('transitionend', () => {
+    if (body.style.height !== '0px') {
+      body.style.height = 'auto';
+    }
+  });
+};
 
-        currentControl.setAttribute('aria-expanded', 'false');
-        currentContent.setAttribute('aria-hidden', 'true');
-      } else {
-        accordionItems.forEach((function (el) {
-          if (el !== self) {
-            var previousControl = el.querySelector('.navigation__button');
-            var previousContent = el.querySelector('.navigation__inner-list');
-            el.classList.remove('navigation__accordion-item--active');
-            previousControl.setAttribute('aria-expanded', 'false');
-            previousContent.setAttribute('aria-hidden', 'true');
-          }
-        }));
-        self.classList.add('navigation__accordion-item--active');
-        currentControl.setAttribute('aria-expanded', 'true');
-        currentContent.setAttribute('aria-hidden', 'false');
-      }
+const accordionOpen = (trigger, body) => {
+  if (body.style.height === '0px' || window.getComputedStyle(body).height === '0px') {
+    trigger.classList.add('navigation__trigger--active');
+    trigger.setAttribute('aria-expanded', 'true');
+    body.setAttribute('aria-hidden', 'false');
+    body.classList.add('navigation__inner-content--active');
+    body.style.height = `${body.scrollHeight}px`;
+  }
+};
+
+const accordionClose = (trigger, body) => {
+  if (body.style.height !== '0px' && window.getComputedStyle(body).height !== '0px') {
+
+    trigger.classList.remove('navigation__trigger--active');
+    trigger.setAttribute('aria-expanded', 'false');
+    body.setAttribute('aria-hidden', 'true');
+    body.style.height = `${body.scrollHeight}px`;
+    setTimeout(() => {
+      body.style.height = '0';
+    }, 0);
+    setTimeout(() => {
+      body.classList.remove('navigation__inner-content--active');
+    }, 700);
+  }
+};
+
+const accordionToggle = (target) => {
+  const trigger = target;
+  const body = target.closest('.navigation__accordion-item').querySelector('.navigation__inner-content');
+
+  setHeightOnTransitionEnd(body);
+
+  if (trigger.classList.contains('navigation__trigger--active')) {
+    accordionClose(trigger, body);
+    accordionTriggerDisable(trigger);
+  } else {
+    accordionOpen(trigger, body);
+    accordionTriggerDisable(trigger);
+  }
+};
+
+const onButtonClick = () => {
+  accordionTriggers.forEach((trigger) => {
+    trigger.addEventListener('click', (evt) => {
+      const self = evt.currentTarget;
+      accordionToggle(self);
     });
   });
-}
+};
 
 onButtonClick();
 
 // mask
 
 function createPhoneMask(evt) {
-  var ind = 0;
-  var matrix = '+7(___) ___-__-__';
-  var defaultPrefix = matrix.replace(/\D/g, '');
-  var value = evt.target.value.replace(/\D/g, '');
+  let ind = 0;
+  const matrix = '+7(___) ___-__-__';
+  const defaultPrefix = matrix.replace(/\D/g, '');
+  let value = evt.target.value.replace(/\D/g, '');
 
   if (defaultPrefix.length >= value.length) {
     value = defaultPrefix;
   }
 
-  evt.target.value = matrix.replace(/./g, function (symbol) {
+  evt.target.value = matrix.replace(/./g, (symbol) => {
     if (/[_\d]/.test(symbol) && ind < value.length) {
       return value.charAt(ind++);
     } else {
@@ -80,12 +114,12 @@ function createPhoneMask(evt) {
 }
 
 function checkPhoneFocus(field) {
-  field.addEventListener('focus', function (evt) {
+  field.addEventListener('focus', (evt) => {
     if (field.value.length === 0) {
       evt.target.value = '+7';
     }
   });
-  field.addEventListener('blur', function (evt) {
+  field.addEventListener('blur', (evt) => {
     if (field.value === '+7') {
       evt.target.value = '';
     }
@@ -94,15 +128,15 @@ function checkPhoneFocus(field) {
 
 // validation
 
-var forms = document.querySelectorAll('[name=feedback-form]');
-var phoneInputs = document.querySelectorAll('input[type="tel"]');
-var phoneRegex = /^((\+7|7|8)+([0-9]){10})$/;
-var MIN_NUMBERS_LENGTH = 16;
-var errorMessage = 'Пожалуйста, проверьте правильность введенных данных';
+const forms = document.querySelectorAll('[name=feedback-form]');
+const phoneInputs = document.querySelectorAll('input[type="tel"]');
+const phoneRegex = /^((\+7|7|8)+([0-9]){10})$/;
+const MIN_NUMBERS_LENGTH = 16;
+const errorMessage = 'Пожалуйста, проверьте правильность введенных данных';
 
 function checkPhoneField(regex, field) {
-  var inputValue = field.value.replace(/\D/g, '');
-  var valueLength = inputValue.length;
+  const inputValue = field.value.replace(/\D/g, '');
+  const valueLength = inputValue.length;
 
   if (valueLength === 0) {
     field.setCustomValidity('Пожалуйста, введите номер');
@@ -116,33 +150,33 @@ function checkPhoneField(regex, field) {
   field.reportValidity();
 }
 
-phoneInputs.forEach(function (inputTel) {
+phoneInputs.forEach((inputTel) => {
   checkPhoneFocus(inputTel);
-  inputTel.addEventListener('keypress', function (evt) {
+  inputTel.addEventListener('keypress', (evt) => {
     if (!/\d/.test(evt.key)) {
       evt.preventDefault();
     }
   });
   inputTel.addEventListener('input', createPhoneMask);
-  inputTel.addEventListener('input', function (evt) {
+  inputTel.addEventListener('input', (evt) => {
     checkPhoneField(phoneRegex, evt.target);
   });
 });
 
 // localStorage
 
-forms.forEach(function (form) {
-  var nameInput = form.querySelector('input[type="text"]');
-  var phoneInput = form.querySelector('input[type="tel"]');
-  var feedbackTextarea = form.querySelector('textarea');
+forms.forEach((form) => {
+  const nameInput = form.querySelector('input[type="text"]');
+  const phoneInput = form.querySelector('input[type="tel"]');
+  const feedbackTextarea = form.querySelector('textarea');
 
   phoneInput.removeAttribute('pattern');
 
-  var storageName = '';
-  var storagePhone = '';
-  var storageFeedback = '';
+  let storageName = '';
+  let storagePhone = '';
+  let storageFeedback = '';
 
-  function isStorage() {
+  const isStorage = () => {
     try {
       storageName = localStorage.getItem('userName');
       storagePhone = localStorage.getItem('userPhone');
@@ -151,18 +185,18 @@ forms.forEach(function (form) {
     } catch (err) {
       return false;
     }
-  }
+  };
 
-  var isStorageSupport = isStorage();
-  function saveFormData() {
+  const isStorageSupport = isStorage();
+  const saveFormData = () => {
     if (isStorageSupport) {
       localStorage.setItem('userName', nameInput.value);
       localStorage.setItem('userPhone', phoneInput.value);
       localStorage.setItem('userFeedback', feedbackTextarea.value);
     }
-  }
+  };
 
-  function fillForm() {
+  const fillForm = () => {
     isStorage();
     if (storageName) {
       nameInput.value = storageName;
@@ -173,22 +207,22 @@ forms.forEach(function (form) {
     if (storageFeedback) {
       feedbackTextarea.value = storageFeedback;
     }
-  }
+  };
 
   fillForm(form);
 
-  form.addEventListener('submit', function () {
+  form.addEventListener('submit', () => {
     saveFormData();
   });
 });
 
 // modal
 
-var modal = document.querySelector('.modal');
-var overlay = modal.querySelector('.overlay');
-var openButton = document.querySelector('.main-nav__button a');
-var closeButton = modal.querySelector('button[type="button"]');
-var popupNameInput = modal.querySelector('input[type="text"]');
+const modal = document.querySelector('.modal');
+const overlay = modal.querySelector('.overlay');
+const openButton = document.querySelector('.main-nav__button a');
+const closeButton = modal.querySelector('button[type="button"]');
+const popupNameInput = modal.querySelector('input[type="text"]');
 
 function closePopup() {
   modal.classList.remove('modal--show');
@@ -211,7 +245,6 @@ function closeOnEnter(evt) {
   }
 }
 
-
 function closeOnOverlay(evt) {
   evt.preventDefault();
   closePopup();
@@ -227,7 +260,7 @@ function closeOnEsc(evt) {
 }
 
 function openPopup() {
-  openButton.addEventListener('click', function (evt) {
+  openButton.addEventListener('click', (evt) => {
     evt.preventDefault();
     modal.classList.add('modal--show');
     overlay.classList.add('overlay--show');
@@ -247,16 +280,16 @@ openPopup();
 
 function trapFocus(element) {
 
-  var focusableEls = modal.querySelectorAll('input,button,textarea');
-  var firstFocusableEl = focusableEls[0];
-  var lastFocusableEl = focusableEls[focusableEls.length - 1];
+  const focusableEls = modal.querySelectorAll('input,button,textarea');
+  const firstFocusableEl = focusableEls[0];
+  const lastFocusableEl = focusableEls[focusableEls.length - 1];
 
-  element.addEventListener('keydown', function (evt) {
+  element.addEventListener('keydown', (evt) => {
     if (!isTabPressed) {
       return;
     }
 
-    if (evt.shiftKey) {
+    if (evt.shiftKey && evt.key === 'Tab') {
       if (document.activeElement === firstFocusableEl) {
         lastFocusableEl.focus();
         evt.preventDefault();
@@ -282,11 +315,11 @@ function scrollToElement(element) {
 }
 
 function smoothAnchorScroll() {
-  var smoothLinks = document.querySelectorAll('a[href^="#"]:not(a[href="#"]');
-  smoothLinks.forEach(function (smoothLink) {
-    smoothLink.addEventListener('click', function (evt) {
+  const smoothLinks = document.querySelectorAll('a[href^="#"]:not(a[href="#"]');
+  smoothLinks.forEach((smoothLink) => {
+    smoothLink.addEventListener('click', (evt) => {
       evt.preventDefault();
-      var id = smoothLink.getAttribute('href');
+      const id = smoothLink.getAttribute('href');
       scrollToElement(document.querySelector(id));
     });
   });
